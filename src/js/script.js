@@ -1,4 +1,6 @@
 
+import '../css/style.css';
+
 function loadJsonData() {
   $.ajax({
     url: '../Worker_and_Temporary_Worker.json', // Path to your local JSON file
