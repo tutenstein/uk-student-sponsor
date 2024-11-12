@@ -285,4 +285,19 @@ footer{
 	/*#example {
 		display: none;
 	}*/
-	
+	.loading-overlay {
+		position: relative;
+		pointer-events: none;
+		opacity: 0.6;
+	  }
+	  
+	.loading-overlay::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(255, 255, 255, 0.8) url('../img/giphy.gif') center no-repeat;
+		z-index: 1000;
+	  }
