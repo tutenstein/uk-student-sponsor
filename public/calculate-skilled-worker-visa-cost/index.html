@@ -13,18 +13,28 @@
     </script>
 
     <!-- Meta -->
+    <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>UK Tier 2 Sponsor List - Comprehensive Guide for 2024</title>
-    <meta name="description" content="Discover the UK Tier 2 Sponsor List for 2024. Find companies offering visa sponsorship and start your career in the UK.">
-    <meta name="keywords" content="UK sponsor list, visa sponsorship UK, Tier 2 sponsor list, UK work visa, sponsorship companies UK, UK visa jobs">
-    <meta property="og:description" content="Explore the list of organizations licensed to sponsor workers on the Worker and Temporary Worker immigration routes in the UK.">
-    <meta property="og:title" content="UK Tier 2 Sponsor List - Comprehensive Guide for 2023">
-    <meta property="article:tag" content="Job Vacancies, Jobs, Sponsored Visas, Vacancies, Visa, Tier 2 Visa,Skilled Worker Visa ">
-    <meta property="article:section" content="Jobs">
-    <meta property="og:locale" content="en_UK">
-    <meta property="og:type" content="article">
+    <!-- Viewport meta tag for responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Primary Meta Tags -->
+    <title>UK Skilled Worker Visa Calculator 2024 - Estimate Your Visa Costs</title>
+    <meta name="description" content="Calculate your UK Skilled Worker Visa costs for 2024 using our comprehensive visa fee calculator. Plan your move to the UK with accurate cost estimates.">
+    <meta name="keywords" content="UK Skilled Worker Visa Calculator, Visa Cost Calculator, UK Visa Fees 2024, Tier 2 Visa Costs, UK Immigration Fees, Visa Application Fee, Healthcare Surcharge, Immigration Health Surcharge, Visa Support Funds">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="UK Skilled Worker Visa Calculator 2024 - Estimate Your Visa Costs">
+    <meta property="og:description" content="Calculate your UK Skilled Worker Visa costs for 2024 using our comprehensive visa fee calculator. Plan your move to the UK with accurate cost estimates.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://uksponsorlist.co.uk/skilled-worker-visa-calculator/">
+    <meta property="og:locale" content="en_GB">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="UK Skilled Worker Visa Calculator 2024 - Estimate Your Visa Costs">
+    <meta name="twitter:description" content="Calculate your UK Skilled Worker Visa costs for 2024 using our comprehensive visa fee calculator. Plan your move to the UK with accurate cost estimates.">
+
         <!-- The compiled CSS file -->
     <link rel="stylesheet" href="../dist/production.css">
     <link rel="stylesheet" href="../dist/output.css">
@@ -252,13 +262,14 @@
                     <li class="small mr2"><a class="link link--text" href="/">UK Tier 2 Sponsorship</a></li>
                     <li class="small mr2"><a class="link link--text" href="../sponsor-list/">Sponsors List</a></li>
                     <li class="small mr2"><a class="link link--text" href="../skilled-worker-visa-occupations-codes/">Skilled Worker Visa: Occupations & Codes</a></li>
-                    <li class="small mr2"><a class="link link--text current" href="./calculate-skilled-worker-visa-cost/">Skilled Worker Visa Cost Calculator</a></li>
+                    <li class="small mr2"><a class="link link--text current" href=".">Skilled Worker Visa Cost Calculator</a></li>
                     <li class="small mr2"><a class="link link--text" href="../faqs/">FAQs</a></li>
                 </ul>
             </nav>
             <!-- Page Content -->
             <main class="content pt2 pb2">
                 <h1 class="h2 align--center">UK Skilled Worker Visa Calculator 2024</h1>
+                <p class="align--center">Estimate your Skilled Worker Visa fees, including application fees, healthcare surcharge, and dependent costs.</p>
                 
                 <div class="calculator-section">
                     <div class="form-group">
@@ -342,6 +353,7 @@
                 <div class="explanation-section" id="explanation">
                     <h3>Calculation Breakdown</h3>
                     <div id="explanationText" class="explanation-text"></div>
+                    <p>For detailed information on visa fees, visit the <a href="https://www.gov.uk/skilled-worker-visa/how-much-it-costs" target="_blank" rel="nofollow noopener">official UK government website</a>.</p>
                 </div>
             </main>
             <footer class="border--top pt1 pb1">
@@ -352,7 +364,147 @@
 
     </section>
 
+    <script>
+        const FEES = {
+            standard: {
+                inside: {
+                    3: 827,
+                    5: 1636
+                },
+                outside: {
+                    3: 719,
+                    5: 1420
+                }
+            },
+            shortage: {
+                inside: {
+                    3: 551,
+                    5: 1084
+                },
+                outside: {
+                    3: 551,
+                    5: 1084
+                }
+            },
+            healthcare: {
+                inside: {
+                    3: 284,
+                    5: 551
+                },
+                outside: {
+                    3: 284,
+                    5: 551
+                }
+            },
+            ihs: {
+                adult: 1035,
+                child: 776
+            },
+            priority: {
+                priority: 500,
+                super: 1000
+            }
+        };
 
+        function calculateFees() {
+            const location = document.querySelector('input[name="location"]:checked')?.value;
+            if (!location) {
+                alert('Please select application location');
+                return;
+            }
+
+            const duration = parseInt(document.getElementById('duration').value);
+            const jobType = document.getElementById('jobType').value;
+            const hasPartner = parseInt(document.getElementById('hasPartner').value);
+            const childDependents = parseInt(document.getElementById('childDependents').value);
+            const priorityService = document.getElementById('priorityService').value;
+
+            // Calculate base visa fee
+            let baseFee;
+            if (duration <= 3) {
+                baseFee = FEES[jobType][location][3];
+            } else {
+                baseFee = FEES[jobType][location][5];
+            }
+
+            // Calculate dependent visa fees
+            const partnerVisaFees = hasPartner ? baseFee : 0;
+            const childrenVisaFees = baseFee * childDependents;
+            const dependentVisaFees = partnerVisaFees + childrenVisaFees;
+
+            // Calculate IHS
+            const mainApplicantIHS = FEES.ihs.adult * duration;
+            const partnerIHS = hasPartner ? FEES.ihs.adult * duration : 0;
+            const childIHS = FEES.ihs.child * duration * childDependents;
+            const totalIHS = mainApplicantIHS + partnerIHS + childIHS;
+
+            // Calculate priority fee
+            const priorityFee = priorityService !== 'none' ? FEES.priority[priorityService] : 0;
+
+            // Calculate totals
+            const totalVisaFee = baseFee + dependentVisaFees;
+            const totalCost = totalVisaFee + totalIHS + priorityFee;
+
+            // Update display
+            document.getElementById('visaFee').textContent = `£${baseFee}`;
+            document.getElementById('ihsFee').textContent = `£${totalIHS}`;
+            document.getElementById('priorityFee').textContent = `£${priorityFee}`;
+            document.getElementById('dependentFees').textContent = `£${dependentVisaFees}`;
+            document.getElementById('totalCost').textContent = `£${totalCost}`;
+
+            let explanation = `
+        <p><strong>Detailed Breakdown of Fees:</strong></p>
+        <ol>
+            <li><strong>Base Visa Fee:</strong> £${baseFee}
+                <ul>
+                    <li>Based on ${location} UK application</li>
+                    <li>For ${duration} year(s) duration</li>
+                    <li>Job type: ${jobType}</li>
+                </ul>
+            </li>
+
+            <li><strong>Healthcare Surcharge (IHS):</strong>
+                <ul>
+                    <li>Main applicant: £${mainApplicantIHS} (£${FEES.ihs.adult} × ${duration} years)</li>
+                    ${hasPartner ? `<li>Partner: £${partnerIHS} (£${FEES.ihs.adult} × ${duration} years)</li>` : ''}
+                    ${childDependents > 0 ? `<li>Children: £${childIHS} (£${FEES.ihs.child} × ${duration} years × ${childDependents} children)</li>` : ''}
+                </ul>
+            </li>
+
+            ${dependentVisaFees > 0 ? `
+            <li><strong>Dependent Visa Fees:</strong>
+                <ul>
+                    ${hasPartner ? `<li>Partner visa fee: £${partnerVisaFees}</li>` : ''}
+                    ${childDependents > 0 ? `<li>Children visa fees: £${childrenVisaFees} (£${baseFee} × ${childDependents})</li>` : ''}
+                </ul>
+            </li>
+            ` : ''}
+
+            ${priorityFee > 0 ? `
+            <li><strong>Priority Service Fee:</strong> £${priorityFee}
+                <ul>
+                    <li>Service type: ${priorityService}</li>
+                </ul>
+            </li>
+            ` : ''}
+
+            <li><strong>Total Cost Breakdown:</strong>
+                <ul>
+                    <li>Base visa fee: £${baseFee}</li>
+                    <li>Total IHS: £${totalIHS}</li>
+                    <li>Dependent fees: £${dependentVisaFees}</li>
+                    <li>Priority fee: £${priorityFee}</li>
+                    <li><strong>Final total: £${totalCost}</strong></li>
+                </ul>
+            </li>
+        </ol>
+    `;
+
+    // Açıklama metnini güncelle
+    document.getElementById('explanationText').innerHTML = explanation;
+}
+        
+    </script>
 </body>
 
 </html>
