@@ -2,8 +2,8 @@
 import '../css/style.css';
 
 function loadJsonData() {
-  // Loading overlay'i göster
-  $("div").addClass("loading-overlay");
+  // Tabloda yükleniyor göstergesini ekle
+  $("#example").addClass("loading-overlay");
   
   return $.ajax({
     url: '../Worker_and_Temporary_Worker.json',
@@ -12,13 +12,15 @@ function loadJsonData() {
     return loadTable(data);
   }).fail(function(jqXHR, textStatus, errorThrown) {
     console.error('Error loading JSON data:', textStatus, errorThrown);
-    $("div").removeClass("loading-overlay");
+    // Hata durumunda yükleniyor göstergesini kaldır
+    $("#example").removeClass("loading-overlay");
   });
 }
 
 function loadTable(data) {
   if (!Array.isArray(data)) {
     console.error('Invalid data format');
+    $("#example").removeClass("loading-overlay");
     return;
   }
 
@@ -36,9 +38,9 @@ function loadTable(data) {
     searching: true,
     responsive: true,
     processing: true,
-    deferRender: true,    // Önemli performans optimizasyonu
-    orderClasses: false,  // Sıralama için CSS class'larını devre dışı bırak
-    lengthMenu: [[50, 100, 250, 500], [50, 100, 250, 500]], // Sayfa başına gösterilecek kayıt sayısını sınırla
+    deferRender: true,
+    orderClasses: false,
+    lengthMenu: [[50, 100, 250, 500], [50, 100, 250, 500]],
     columns: [
       { data: "Organisation Name" },
       { data: "Town/City" },
@@ -47,8 +49,8 @@ function loadTable(data) {
       { data: "Route" }
     ],
     initComplete: function() {
-      $("#example").show();
-      $("div").removeClass("loading-overlay");
+      // Yükleniyor göstergesini kaldır
+      $("#example").removeClass("loading-overlay");
     }
   });
 
@@ -61,7 +63,7 @@ function loadTable(data) {
       currentChunk++;
       
       // Sonraki chunk'ı eklemek için setTimeout kullan
-      setTimeout(addNextChunk, 100);
+      setTimeout(addNextChunk, 50);
     }
   }
 

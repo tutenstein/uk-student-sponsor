@@ -285,19 +285,40 @@ footer{
 	/*#example {
 		display: none;
 	}*/
-	.loading-overlay {
-		position: relative;
-		pointer-events: none;
-		opacity: 0.6;
-	  }
-	  
-	.loading-overlay::after {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: rgba(255, 255, 255, 0.8) url('../img/giphy.gif') center no-repeat;
-		z-index: 1000;
-	  }
+/* Tablonun üstüne yükleniyor göstergesi eklemek için */
+
+#example.loading-overlay {
+	position: relative;
+  }
+  
+  #example.loading-overlay::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(255, 255, 255, 0.8) url('../img/giphy.gif') center no-repeat;
+	z-index: 1000;
+  }
+   /* 
+  #example.loading-overlay::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -25px 0 0 -25px;
+	width: 50px;
+	height: 50px;
+	border: 5px solid #ccc;
+	border-top-color: #1a73e8;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+	z-index: 1000;
+  }
+  
+ Spinner animasyonu
+  @keyframes spin {
+	to { transform: rotate(360deg); }
+  }
+  */

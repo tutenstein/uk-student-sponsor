@@ -6,10 +6,13 @@ const JsonMinimizerPlugin = require("json-minimizer-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-    entry: "./src/js/script.js",
+    entry: {
+        main: "./src/js/script.js",
+        calculator: "./src/js/calculator.js"
+    },
     output: {
         path: path.resolve(__dirname, "public/dist"),
-        filename: "output.js"
+        filename: "[name].bundle.js" // Her entry point için ayrı bundle
     },
     module: {
         rules: [
