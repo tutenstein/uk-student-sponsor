@@ -66,13 +66,13 @@ a:hover {
 }
 
 /* Liste Elemanları */
-.content ul {
+ul {
 	color: var(--secondary-color);
     margin-left: 1.5em;
     margin-bottom: 1em;
 }
 
-.content li {
+li {
 	color: var(--secondary-color);
     margin-bottom: 0.5em;
 }

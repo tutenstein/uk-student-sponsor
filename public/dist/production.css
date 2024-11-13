@@ -2286,7 +2286,7 @@ body{
     outline:0;
 }
 body,[class~=link--text]:link,[class~=link--text]:visited{
-    color:#444a52;
+    color:#1a365d;
 }
 [class~=p3]{
     padding-bottom:3.2rem;
