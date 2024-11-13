@@ -25,7 +25,7 @@ function loadTable(data) {
   }
 
   // Veriyi chunk'lara böl
-  const chunkSize = 2000;
+  const chunkSize = 5000;
   const chunks = [];
   
   for (let i = 0; i < data.length; i += chunkSize) {
@@ -40,7 +40,7 @@ function loadTable(data) {
     processing: true,
     deferRender: true,
     orderClasses: false,
-    lengthMenu: [[10, 20, 50, 100, 250, 500], [10, 20, 50, 100, 250, 500]],
+    lengthMenu: [[50, 100, 250, 500], [50, 100, 250, 500]],
     columns: [
       { data: "Organisation Name" },
       { data: "Town/City" },

@@ -136,3 +136,4 @@ function calculateFees() {
 
 document.getElementById('explanationText').innerHTML = explanation;
 }
+window.calculateFees = calculateFees;
