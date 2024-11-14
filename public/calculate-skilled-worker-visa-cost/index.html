@@ -59,7 +59,6 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', system-ui, sans-serif;
         }
 
         body {
@@ -215,6 +214,18 @@
     color: var(--primary-color);
     margin-bottom: 15px;
     padding: 0 15px; /* Başlığa iç boşluk ekler */
+}
+@media (max-width: 767px) {
+    body {
+        padding: 10px; /* Mobil için daha az padding */
+    }
+
+    .container {
+		padding: 10px;
+        max-width: 100%; /* Tam genişlik */
+    }
+    
+
 }
 
 

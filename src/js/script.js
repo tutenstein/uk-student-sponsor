@@ -25,7 +25,7 @@ function loadTable(data) {
   }
 
   // Veriyi chunk'lara böl
-  const chunkSize = 5000;
+  const chunkSize = 3000;
   const chunks = [];
   
   for (let i = 0; i < data.length; i += chunkSize) {
@@ -34,9 +34,10 @@ function loadTable(data) {
 
   // DataTable'ı initialize et
   const table = $('#example').DataTable({
+    scrollX: true,
     destroy: true,
     searching: true,
-    responsive: true,
+    responsive: false, 
     processing: true,
     deferRender: true,
     orderClasses: false,

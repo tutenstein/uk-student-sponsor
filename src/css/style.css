@@ -357,21 +357,7 @@ footer{
 		border-bottom: 1px solid #000000; /* Bottom border for cells */
 	  }
 
-	  @media (max-width: 767px) {
-		.text p, .text h4, .text h3, .text ul {
-			padding-left: 15px;
-			padding-right: 15px;
-		}
-		.search-input {
-			max-width: 100%;
-		}
-		.container{
-			max-width:90%;
-			width: 100%;
-		}
 
-	}
-	
 	.search-input {
 		width: 100%;
 		max-width: 400px;
@@ -381,9 +367,6 @@ footer{
 		border-radius: 5px;
 	}
 
-	/*#example {
-		display: none;
-	}*/
 /* Tablonun üstüne yükleniyor göstergesi eklemek için */
 
 #example.loading-overlay {
@@ -400,21 +383,132 @@ footer{
 	background: rgba(255, 255, 255, 0.8) url('../img/giphy.gif') center no-repeat;
 	z-index: 1000;
   }
+  #example{
+	width: 100%;
+	overflow: hidden;
+  }
+/* Mobil ayarlar */
+@media (max-width: 767px) {
+    body {
+        padding: 10px; /* Mobil için daha az padding */
+    }
 
-  @media (max-width: 768px) {
-    h1 {
-        font-size: 2rem;
-    }
-    h2 {
-        font-size: 1.75rem;
-    }
-    h3 {
-        font-size: 1.5rem;
-    }
-    h4 {
-        font-size: 1.25rem;
-    }
+	#example {
+			font-size: 12px; /* Adjust font size for smaller screens */
+		}
     .container {
-        padding: 0 0.5rem;
+		padding: 10px;
+        max-width: 100%; /* Tam genişlik */
+    }
+	[class~=container]{
+		width:100%; 
+	}
+
+    h1 {
+        font-size: 1.8rem; /* Daha küçük başlık boyutu */
+    }
+
+    h2 {
+        font-size: 1.6rem; /* Daha küçük başlık boyutu */
+    }
+
+    h3 {
+        font-size: 1.4rem; /* Daha küçük başlık boyutu */
+    }
+
+    h4 {
+        font-size: 1.2rem; /* Daha küçük başlık boyutu */
+    }
+
+    p {
+        font-size: 16px; /* Paragraf boyutunu küçült */
+    }
+
+    .text p, .text h4, .text h3, .text ul, .text ol, .text li {
+        font-size: 18px; /* Metin boyutunu ayarla */
+    }
+
+    table {
+        width: 100%; /* Tabloların tam genişlikte olmasını sağla */
+        overflow-x: auto; /* Yatay kaydırma */
+    }
+
+    .search-input {
+        width: 100%; /* Arama çubuğu tam genişlikte */
+        padding: 8px; /* Padding ayarı */
+    }
+
+    footer {
+        text-align: center; /* Footer metnini ortala */
+    }
+}
+
+/* Ekstra küçük ekranlar için ayarlar */
+@media (max-width: 480px) {
+    .text p, .text h4, .text h3, .text ul, .text ol, .text li {
+        font-size: 16px; /* Çok küçük ekranlar için metin boyutunu daha da küçült */
+    }
+
+    .container {
+        padding: 10px; /* Daha fazla padding azalt */
+    }
+}
+
+.navigation {
+    background-color: #ffffff; /* Beyaz arka plan rengi */
+    padding: 15px; /* İç boşluk eklemek için */
+    border: 1px solid #f1eaca;; /* İnce bir kenarlık eklemek için */
+    border-radius: 5px; /* Kenarları yuvarlatmak için */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.082); /* Gölgelendirme eklemek için */
+    margin: 20px 0; /* Üst ve alt boşluk eklemek için */
+}
+
+.navigation ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; /* Madde işaretlerini kaldırmak için */
+    display: flex; /* Flexbox kullanarak öğeleri yan yana yerleştirmek için */
+    justify-content: center; /* Öğeleri yatay hizalamak için */
+}
+
+.navigation li {
+    margin: 0 15px; /* Sağ ve sol tarafa boşluk eklemek için */
+	padding: 10px 20px; /* İç boşluk eklemek için */
+    background-color: #bebb8dbd; /* Mavi arka plan rengi */
+    border-radius: 5px; /* Kenarları yuvarlatmak için */
+    text-decoration: none; /* Alt çizgiyi kaldırmak için */
+
+}
+
+.navigation a {
+    display: inline-block; /* Buton gibi görünmesi için */
+    text-decoration: none; /* Alt çizgiyi kaldırmak için */
+    font-weight: bold; /* Kalın yazı stili */
+    transition: background-color 0.3s, transform 0.2s; /* Geçiş efektleri */
+}
+
+
+.navigation a.current {
+    color: #007bff; /* Mavi renk */
+}
+
+.navigation a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+    .navigation ul {
+        flex-direction: column; 
+        align-items: center; 
+    }
+
+    .navigation li {
+        margin: 5px 0; 
+		width: 100%; 
+
+    }
+    .navigation a {
+        width: 100%; 
+        text-align: left; 
     }
 }
