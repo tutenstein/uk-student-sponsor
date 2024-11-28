@@ -41,7 +41,7 @@ function loadTable(data) {
     processing: true,
     deferRender: true,
     orderClasses: false,
-    lengthMenu: [[50, 100, 250, 500], [50, 100, 250, 500]],
+    lengthMenu: [[25,50, 100, 250, 500], [25,50, 100, 250, 500]],
     columns: [
       { data: "Organisation Name" },
       { data: "Town/City" },

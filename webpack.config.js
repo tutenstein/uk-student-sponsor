@@ -8,7 +8,8 @@ const CopyPlugin = require("copy-webpack-plugin");
 module.exports = {
     entry: {
         main: "./src/js/script.js",
-        calculator: "./src/js/calculator.js"
+        calculator: "./src/js/calculator.js",
+        recently: "./src/js/script-recently.js"
     },
     output: {
         path: path.resolve(__dirname, "public/dist"),

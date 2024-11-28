@@ -22,20 +22,20 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-	font-size: 2em;
-    margin-top: 0;
+	font-size: 1.75rem;
+    margin-top: 0;	
 }
 
 h2 {
-    font-size: 1.75rem;
-}
-
-h3 {
     font-size: 1.5rem;
 }
 
-h4 {
+h3 {
     font-size: 1.25rem;
+}
+
+h4 {
+    font-size: 1rem;
 }
 
 p {
@@ -91,10 +91,10 @@ ol {
 }
 
 .container{
-	max-width: 70%;
+	max-width: 90%;
 	margin: 0 auto;
 	background: white;
-	padding: 30px;
+	padding: 20px;
 	border-radius: var(--border-radius);
 	box-shadow: var(--box-shadow);
 }
@@ -140,6 +140,7 @@ footer{
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
+	border-radius: var(--border-radius);
 }
 .text p{
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -457,10 +458,6 @@ footer{
 .navigation {
     background-color: #ffffff; /* Beyaz arka plan rengi */
     padding: 15px; /* İç boşluk eklemek için */
-    border: 1px solid #f1eaca;; /* İnce bir kenarlık eklemek için */
-    border-radius: 5px; /* Kenarları yuvarlatmak için */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.082); /* Gölgelendirme eklemek için */
-    margin: 20px 0; /* Üst ve alt boşluk eklemek için */
 }
 
 .navigation ul {
@@ -474,7 +471,7 @@ footer{
 .navigation li {
     margin: 0 15px; /* Sağ ve sol tarafa boşluk eklemek için */
 	padding: 10px 20px; /* İç boşluk eklemek için */
-    background-color: #bebb8dbd; /* Mavi arka plan rengi */
+    background-color:aliceblue; /* Mavi arka plan rengi */
     border-radius: 5px; /* Kenarları yuvarlatmak için */
     text-decoration: none; /* Alt çizgiyi kaldırmak için */
 
