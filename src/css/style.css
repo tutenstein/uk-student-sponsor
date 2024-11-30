@@ -13,7 +13,7 @@
     --max-content-width: 800px;
 }
 h1, h2, h3, h4 {
-    color: var(--primary-color);
+    color: black;
     line-height: var(--heading-line-height);
     margin-top: 1.5em;
     margin-bottom: 0.5em;
@@ -40,7 +40,7 @@ h4 {
 
 p {
     margin-bottom: 1em;
-    color: var(--secondary-color);
+    color: black;
     font-size: 1rem;
 }
 
@@ -73,7 +73,7 @@ a:hover {
 }
 
 .content li {
-	color: var(--secondary-color);
+	color: black;
     margin-bottom: 0.5em;
 }
 
@@ -84,7 +84,7 @@ a:hover {
 }
 
 .faq-section h3 {
-    color: var(--primary-color);
+    color: black;
     margin-bottom: 1rem;
     cursor: pointer;
 }
@@ -95,20 +95,20 @@ a:hover {
 }
 
 .faq-section li {
-    color: var(--secondary-color) !important;;
+    color: black;
     margin-bottom: 0.5em;
     position: relative;
 }
 .faq-section [itemprop="text"],
 [itemtype="https://schema.org/Answer"] [itemprop="text"] {
-    color: var(--secondary-color);
+    color: black;
 }
 
 .faq-section li:before {
     content: "•";
     position: absolute;
     left: -1.2rem;
-    color: var(--secondary-color);
+    color: black;
 }
 
 /* Sıralı Listeler */
@@ -181,27 +181,27 @@ footer{
 	font-size: 20px;
 }
 .text h4{
-	color: var(--primary-color);
+	color: black;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	font-size: 20px;
 }
 .text h3{
-	color: var(--primary-color);
+	color: black;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	font-size: 30px;
 }
 .text ul{
-	color: var(--primary-color);
+	color: black;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	font-size: 20px;
 }
 .text ol{
-	color: var(--primary-color);
+	color: black;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	font-size: 20px;
 }
 .text li{
-	color: var(--primary-color);
+	color: black;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	font-size: 20px;
 }
@@ -506,7 +506,7 @@ footer{
 .navigation li {
     margin: 0 15px;
 	padding: 10px 20px;
-    background-color: #FFFFFF;
+    background-color: #8057a838;
     border-radius: 5px;
     text-decoration: none;
     color: var(--primary-color);
