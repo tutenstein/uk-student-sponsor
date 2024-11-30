@@ -8,9 +8,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 module.exports = {
     entry: {
         main: "./src/js/script.js",
-        calculator: "./src/js/calculator.js",
-        recently: "./src/js/script-recently.js"
-    },
+        calculator: "./src/js/calculator.js"    },
     output: {
         path: path.resolve(__dirname, "public/dist"),
         filename: "[name].bundle.js" // Her entry point için ayrı bundle
@@ -50,7 +48,7 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 {
-                    from: path.resolve(__dirname, "src", "Worker_and_Temporary_Worker.json"),
+                    from: path.resolve(__dirname, "src", "Student_Sponsor.json"),
                     to: path.resolve(__dirname, "public/dist") // Hedef klasör
                 },
             ],

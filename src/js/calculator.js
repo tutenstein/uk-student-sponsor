@@ -1,38 +1,28 @@
-
 const FEES = {
-    standard: {
-        inside: {
-            3: 827,
-            5: 1636
+    student: {
+        application: {
+            inside: 490,
+            outside: 490
         },
-        outside: {
-            3: 719,
-            5: 1420
-        }
+        ihs: 624 // per year
     },
-    shortage: {
-        inside: {
-            3: 551,
-            5: 1084
+    childStudent: {
+        application: {
+            inside: 490,
+            outside: 490
         },
-        outside: {
-            3: 551,
-            5: 1084
-        }
+        ihs: 470 // per year
     },
-    healthcare: {
-        inside: {
-            3: 284,
-            5: 551
+    shortTerm: {
+        application: {
+            inside: 200,
+            outside: 200
         },
-        outside: {
-            3: 284,
-            5: 551
-        }
+        ihs: 776 // fixed
     },
-    ihs: {
-        adult: 1035,
-        child: 776
+    dependent: {
+        partner: 490,
+        child: 490
     },
     priority: {
         priority: 500,
@@ -41,75 +31,80 @@ const FEES = {
 };
 
 function calculateFees() {
+    const visaType = document.getElementById('visaType').value;
     const location = document.querySelector('input[name="location"]:checked')?.value;
-    if (!location) {
-        alert('Please select application location');
-        return;
-    }
-
     const duration = parseInt(document.getElementById('duration').value);
-    const jobType = document.getElementById('jobType').value;
     const hasPartner = parseInt(document.getElementById('hasPartner').value);
     const childDependents = parseInt(document.getElementById('childDependents').value);
     const priorityService = document.getElementById('priorityService').value;
 
-    // Calculate base visa fee
-    let baseFee;
-    if (duration <= 3) {
-        baseFee = FEES[jobType][location][3];
-    } else {
-        baseFee = FEES[jobType][location][5];
+    // Validation for location based on visa type
+    if (visaType !== 'shortTerm' && !location) {
+        alert('Please select application location');
+        return;
     }
 
-    // Calculate dependent visa fees
-    const partnerVisaFees = hasPartner ? baseFee : 0;
-    const childrenVisaFees = baseFee * childDependents;
-    const dependentVisaFees = partnerVisaFees + childrenVisaFees;
+    // Calculate application fee
+    let applicationFee;
+    if (visaType === 'shortTerm') {
+        applicationFee = FEES[visaType].application.outside; // Short-term is typically applied from outside
+    } else {
+        applicationFee = FEES[visaType].application[location];
+    }
 
-    // Calculate IHS
-    const mainApplicantIHS = FEES.ihs.adult * duration;
-    const partnerIHS = hasPartner ? FEES.ihs.adult * duration : 0;
-    const childIHS = FEES.ihs.child * duration * childDependents;
-    const totalIHS = mainApplicantIHS + partnerIHS + childIHS;
+    // Calculate Healthcare Surcharge (IHS)
+    let ihsFee;
+    if (visaType === 'shortTerm') {
+        ihsFee = FEES[visaType].ihs;
+    } else {
+        ihsFee = FEES[visaType].ihs * duration;
+    }
+
+    // Calculate dependent fees
+    let dependentVisaFees = 0;
+    if (hasPartner) {
+        dependentVisaFees += FEES.dependent.partner;
+    }
+    if (childDependents > 0) {
+        dependentVisaFees += FEES.dependent.child * childDependents;
+    }
 
     // Calculate priority fee
     const priorityFee = priorityService !== 'none' ? FEES.priority[priorityService] : 0;
 
     // Calculate totals
-    const totalVisaFee = baseFee + dependentVisaFees;
-    const totalCost = totalVisaFee + totalIHS + priorityFee;
+    const totalFees = applicationFee + ihsFee + dependentVisaFees + priorityFee;
 
     // Update display
-    document.getElementById('visaFee').textContent = `£${baseFee}`;
-    document.getElementById('ihsFee').textContent = `£${totalIHS}`;
+    document.getElementById('visaFee').textContent = `£${applicationFee}`;
+    document.getElementById('ihsFee').textContent = `£${ihsFee}`;
     document.getElementById('priorityFee').textContent = `£${priorityFee}`;
     document.getElementById('dependentFees').textContent = `£${dependentVisaFees}`;
-    document.getElementById('totalCost').textContent = `£${totalCost}`;
+    document.getElementById('totalCost').textContent = `£${totalFees}`;
 
+    // Generate explanation
     let explanation = `
 <p><strong>Detailed Breakdown of Fees:</strong></p>
 <ol>
-    <li><strong>Base Visa Fee:</strong> £${baseFee}
+    <li><strong>Visa Application Fee:</strong> £${applicationFee}
         <ul>
-            <li>Based on ${location} UK application</li>
-            <li>For ${duration} year(s) duration</li>
-            <li>Job type: ${jobType}</li>
+            <li>Visa Type: ${getVisaTypeDescription(visaType)}</li>
+            ${visaType !== 'shortTerm' ? `<li>Application Location: ${capitalize(location)} UK</li>` : ''}
         </ul>
     </li>
 
-    <li><strong>Healthcare Surcharge (IHS):</strong>
+    <li><strong>Healthcare Surcharge (IHS):</strong> £${ihsFee}
         <ul>
-            <li>Main applicant: £${mainApplicantIHS} (£${FEES.ihs.adult} × ${duration} years)</li>
-            ${hasPartner ? `<li>Partner: £${partnerIHS} (£${FEES.ihs.adult} × ${duration} years)</li>` : ''}
-            ${childDependents > 0 ? `<li>Children: £${childIHS} (£${FEES.ihs.child} × ${duration} years × ${childDependents} children)</li>` : ''}
+            ${visaType === 'shortTerm' ? `<li>Fixed Healthcare Surcharge for Short-term Study Visa</li>` :
+                `<li>£${FEES[visaType].ihs} × ${duration} year(s)</li>`}
         </ul>
     </li>
 
     ${dependentVisaFees > 0 ? `
-    <li><strong>Dependent Visa Fees:</strong>
+    <li><strong>Dependent Visa Fees:</strong> £${dependentVisaFees}
         <ul>
-            ${hasPartner ? `<li>Partner visa fee: £${partnerVisaFees}</li>` : ''}
-            ${childDependents > 0 ? `<li>Children visa fees: £${childrenVisaFees} (£${baseFee} × ${childDependents})</li>` : ''}
+            ${hasPartner ? `<li>Partner/Spouse visa fee: £${FEES.dependent.partner}</li>` : ''}
+            ${childDependents > 0 ? `<li>Children visa fees: £${FEES.dependent.child} × ${childDependents} = £${FEES.dependent.child * childDependents}</li>` : ''}
         </ul>
     </li>
     ` : ''}
@@ -117,23 +112,42 @@ function calculateFees() {
     ${priorityFee > 0 ? `
     <li><strong>Priority Service Fee:</strong> £${priorityFee}
         <ul>
-            <li>Service type: ${priorityService}</li>
+            <li>Service type: ${capitalize(priorityService)}</li>
         </ul>
     </li>
     ` : ''}
 
     <li><strong>Total Cost Breakdown:</strong>
         <ul>
-            <li>Base visa fee: £${baseFee}</li>
-            <li>Total IHS: £${totalIHS}</li>
-            <li>Dependent fees: £${dependentVisaFees}</li>
-            <li>Priority fee: £${priorityFee}</li>
-            <li><strong>Final total: £${totalCost}</strong></li>
+            <li>Visa Application Fee: £${applicationFee}</li>
+            <li>Healthcare Surcharge (IHS): £${ihsFee}</li>
+            <li>Dependent Fees: £${dependentVisaFees}</li>
+            <li>Priority Fee: £${priorityFee}</li>
+            <li><strong>Final Total: £${totalFees}</strong></li>
         </ul>
     </li>
 </ol>
 `;
 
-document.getElementById('explanationText').innerHTML = explanation;
+    document.getElementById('explanationText').innerHTML = explanation;
 }
+
+function getVisaTypeDescription(type) {
+    switch(type) {
+        case 'student':
+            return 'Student Visa';
+        case 'childStudent':
+            return 'Child Student Visa';
+        case 'shortTerm':
+            return 'Short-term Study Visa';
+        default:
+            return '';
+    }
+}
+
+function capitalize(text) {
+    if (text.length === 0) return text;
+    return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
 window.calculateFees = calculateFees;

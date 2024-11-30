@@ -6,7 +6,7 @@ function loadJsonData() {
   $("#example").addClass("loading-overlay");
   
   return $.ajax({
-    url: '../Worker_and_Temporary_Worker.json',
+    url: '../Student_Sponsor.json',
     dataType: 'json'
   }).then(function(data) {
     return loadTable(data);
@@ -37,17 +37,17 @@ function loadTable(data) {
     scrollX: true,
     destroy: true,
     searching: true,
-    responsive: false, 
+    responsive: true, 
     processing: true,
     deferRender: true,
     orderClasses: false,
     lengthMenu: [[25,50, 100, 250, 500], [25,50, 100, 250, 500]],
     columns: [
-      { data: "Organisation Name" },
+      { data: "Sponsor Name" },
       { data: "Town/City" },
-      { data: "County" },
-      { data: "Type & Rating" },
-      { data: "Route" }
+      { data: "Sponsor Type" },
+      { data: "Status" },
+      { data: "Route" },
     ],
     initComplete: function() {
       // Yükleniyor göstergesini kaldır

@@ -1,9 +1,9 @@
-
 :root {
-	--primary-color: #1a365d;
-	--secondary-color: #2b6cb0;
-	--accent-color: #4299e1;
-	--background-color: #f7fafc;
+	--primary-color: #351C4D;
+	--secondary-color: #765285;
+	--accent-color: #FF7E5F;
+	--background-color: #FFF5F2;
+	--text-light: #F5AB99;
 	--border-radius: 10px;
 	--box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	--font-family-sans: 'Cabin', Arial, sans-serif;
@@ -54,7 +54,7 @@ a:hover {
 }
 /* Renkli Metinler */
 .text--gray {
-    color: #6c757d;
+    color: var(--secondary-color);
 }
 
 .text--primary {
@@ -77,6 +77,40 @@ a:hover {
     margin-bottom: 0.5em;
 }
 
+.faq-section .question {
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--text-light);
+    padding-bottom: 1rem;
+}
+
+.faq-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.faq-section ul {
+    list-style-type: none;
+    padding-left: 1.2rem;
+}
+
+.faq-section li {
+    color: var(--secondary-color) !important;;
+    margin-bottom: 0.5em;
+    position: relative;
+}
+.faq-section [itemprop="text"],
+[itemtype="https://schema.org/Answer"] [itemprop="text"] {
+    color: var(--secondary-color);
+}
+
+.faq-section li:before {
+    content: "•";
+    position: absolute;
+    left: -1.2rem;
+    color: var(--secondary-color);
+}
+
 /* Sıralı Listeler */
 ol {
     margin-left: 1.5em;
@@ -93,7 +127,7 @@ ol {
 .container{
 	max-width: 90%;
 	margin: 0 auto;
-	background: white;
+	background: #FFFFFF;
 	padding: 20px;
 	border-radius: var(--border-radius);
 	box-shadow: var(--box-shadow);
@@ -106,8 +140,8 @@ table thead tr td,
 table thead tr th,
 table tfoot tr td,
 table tfoot tr th{
-	background-color: #000;
-	color: #fff;
+	background-color: var(--primary-color);
+	color: var(--text-light);
 }
 #example_filter{
 	margin-bottom: 20px;
@@ -132,10 +166,10 @@ footer{
 }
             /* Center the photo and make it cover the entire top of the page */
 .cover-photo {
-    background-image: url('../img/bg.webp');
+    background-image: url('../img/uk-cover.jpg');
     background-position: center;
     background-size: cover;
-    height: 400px; /* Adjust the height to fit your photo */
+    height: 600px; /* Adjust the height to fit your photo */
     width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -240,7 +274,7 @@ footer{
 	  
 	  .text-gray-300 {
 		--tw-text-opacity: 1;
-		color: rgb(209 213 219 / var(--tw-text-opacity));
+		color: var(--text-light);
 	  }
 	  
 	  .shadow-md {
@@ -250,7 +284,7 @@ footer{
 	  
 	  .bg-blue-100 {
 		--tw-bg-opacity: 1;
-		background-color: rgb(219 234 254 / var(--tw-bg-opacity));
+		background-color: var(--text-light);
 	  }
 	  
 	  .text-md {
@@ -260,7 +294,7 @@ footer{
 	  
 	  .text-gray-700 {
 		--tw-text-opacity: 1;
-		color: rgb(55 65 81 / var(--tw-text-opacity));
+		color: var(--primary-color);
 	  }
 	  
 	  .uppercase {
@@ -269,7 +303,7 @@ footer{
 	  
 	  .bg-gray-200 {
 		--tw-bg-opacity: 1;
-		background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+		background-color: var(--text-light);
 	  }
 	  
 	  .sticky {
@@ -305,7 +339,7 @@ footer{
 	  
 	  .border-gray-100 {
 		--tw-border-opacity: 1;
-		border-color: rgb(243 244 246 / var(--tw-border-opacity));
+		border-color: var(--text-light);
 	  }
 	  
 	  .px-4 {
@@ -328,7 +362,7 @@ footer{
 	  
 	  /* Add black borders between rows */
 	  tr {
-		border-bottom: 1px solid black; /* Black border */
+		border-bottom: 1px solid var(--primary-color); /* Black border */
 	  }
 	  
 	  tr:last-child {
@@ -337,15 +371,15 @@ footer{
 	  
 	  /* Set text color to black */
 	  table, th, td {
-		color: black;
+		color: var(--primary-color);
 	  }
 	  
 	  /* DataTables-like styling for headers */
 	  th {
 		font-size: 0.6rem; /* Slightly smaller font size */
 		font-weight: bold; /* Bold text */
-		color: #333; /* Dark gray color */
-		background-color: #f9f9f9; /* Light gray background */
+		color: var(--primary-color); /* Dark gray color */
+		background-color: var(--text-light); /* Light gray background */
 		padding: 8px; /* Padding for headers */
 		text-align: left; /* Align text to the left */
 		border-bottom: 2px solid #ddd; /* Bottom border for headers */
@@ -355,7 +389,7 @@ footer{
 	  td {
 		font-size: 0.800; /* Standard font size */
 		padding: 8px; /* Padding for table cells */
-		border-bottom: 1px solid #000000; /* Bottom border for cells */
+		border-bottom: 1px solid var(--primary-color); /* Bottom border for cells */
 	  }
 
 
@@ -364,8 +398,9 @@ footer{
 		max-width: 400px;
 		margin-bottom: 20px;
 		padding: 10px;
-		border: 1px solid #ccc;
+		border: 1px solid var(--secondary-color);
 		border-radius: 5px;
+		background-color: var(--text-light);
 	}
 
 /* Tablonun üstüne yükleniyor göstergesi eklemek için */
@@ -381,7 +416,7 @@ footer{
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: rgba(255, 255, 255, 0.8) url('../img/giphy.gif') center no-repeat;
+	background: rgba(255, 255, 255, 0.9) url('../img/giphy.gif') center no-repeat;
 	z-index: 1000;
   }
   #example{
@@ -456,37 +491,39 @@ footer{
 }
 
 .navigation {
-    background-color: #ffffff; /* Beyaz arka plan rengi */
-    padding: 15px; /* İç boşluk eklemek için */
+    background-color: #FFFFFF;
+    padding: 15px;
 }
 
 .navigation ul {
     margin: 0;
     padding: 0;
-    list-style: none; /* Madde işaretlerini kaldırmak için */
-    display: flex; /* Flexbox kullanarak öğeleri yan yana yerleştirmek için */
-    justify-content: center; /* Öğeleri yatay hizalamak için */
+    list-style: none;
+    display: flex;
+    justify-content: center;
 }
 
 .navigation li {
-    margin: 0 15px; /* Sağ ve sol tarafa boşluk eklemek için */
-	padding: 10px 20px; /* İç boşluk eklemek için */
-    background-color:aliceblue; /* Mavi arka plan rengi */
-    border-radius: 5px; /* Kenarları yuvarlatmak için */
-    text-decoration: none; /* Alt çizgiyi kaldırmak için */
-
+    margin: 0 15px;
+	padding: 10px 20px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    text-decoration: none;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
 }
 
 .navigation a {
-    display: inline-block; /* Buton gibi görünmesi için */
-    text-decoration: none; /* Alt çizgiyi kaldırmak için */
-    font-weight: bold; /* Kalın yazı stili */
-    transition: background-color 0.3s, transform 0.2s; /* Geçiş efektleri */
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+    color: var(--primary-color);
 }
 
 
 .navigation a.current {
-    color: #007bff; /* Mavi renk */
+    color: var(--accent-color);
 }
 
 .navigation a:hover {
@@ -495,17 +532,20 @@ footer{
 
 @media (max-width: 767px) {
     .navigation ul {
-        flex-direction: column; 
-        align-items: center; 
+        flex-direction: column;
+        align-items: center;
     }
 
     .navigation li {
-        margin: 5px 0; 
-		width: 100%; 
+        margin: 5px 0;
+		width: 100%;
 
     }
     .navigation a {
-        width: 100%; 
-        text-align: left; 
+        width: 100%;
+        text-align: left;
     }
+	.cover-photo {
+		height: 400px;
+	}
 }
