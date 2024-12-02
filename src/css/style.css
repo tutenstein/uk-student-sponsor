@@ -167,7 +167,7 @@ footer{
             /* Center the photo and make it cover the entire top of the page */
 .cover-photo {
     background-image: url('../img/uk-cover.jpg');
-    background-position: center;
+    background-position: center top;
     background-size: cover;
     height: 600px; /* Adjust the height to fit your photo */
     width: 100%;
@@ -528,30 +528,51 @@ footer{
 .navigation a:hover {
     text-decoration: underline;
 }
-.table-of-contents {
-    background-color: #f8f8f8;
-    margin-bottom: 30px;
-    border-radius: 5px;
-}
-
-.table-of-contents ul {
-    margin: 0;
-    padding-left: 20px;
-}
-
-.table-of-contents li {
-    margin-bottom: 8px;
-}
-
-.table-of-contents a {
+.table-of-contents .link--text {
+    color: var(--secondary-color); /* Link rengi - koyu mavi */
     text-decoration: none;
-    color: #333;
+    position: relative;
+    transition: color 0.2s ease;
+    padding: 2px 0;
 }
 
-.table-of-contents a:hover {
-    color: #c03b2b ;
-	text-decoration: underline;
+/* Hover efekti */
+.table-of-contents .link--text:hover {
+    color: #1e40af; /* Hover durumunda daha koyu mavi */
 }
+
+/* Tıklanabilir görünüm için alt çizgi animasyonu */
+.table-of-contents .link--text::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+}
+
+/* Hover durumunda alt çizgi animasyonu */
+.table-of-contents .link--text:hover::after {
+    width: 100%;
+}
+
+/* Aktif link stili */
+.table-of-contents .link--text:active {
+    color: #1e3a8a; /* Tıklama anında daha koyu renk */
+}
+
+/* Liste öğeleri için padding */
+.table-of-contents li {
+    padding: 4px 0;
+}
+
+/* Fare imleci pointer olarak değişsin */
+.table-of-contents .link--text {
+    cursor: pointer;
+}
+
 
 @media (max-width: 767px) {
     .navigation ul {
