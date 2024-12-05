@@ -2286,7 +2286,7 @@ body{
     outline:0;
 }
 body,[class~=link--text]:link,[class~=link--text]:visited{
-    color:#1a365d;
+    color:#444a52;
 }
 [class~=p3]{
     padding-bottom:3.2rem;
@@ -2520,7 +2520,7 @@ h5,small,h6{
     float:none;
 }
 h4,h6,h5,h3,h1,h2{
-    font-family:"Playfair Display",Times,serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 [class~=full-width]{
     width:100%;
