@@ -2520,7 +2520,7 @@ h5,small,h6{
     float:none;
 }
 h4,h6,h5,h3,h1,h2{
-    font-family:"Playfair Display",Times,serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 [class~=full-width]{
     width:100%;

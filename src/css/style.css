@@ -6,8 +6,7 @@
 	--text-light: #F5AB99;
 	--border-radius: 10px;
 	--box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	--font-family-sans: 'Cabin', Arial, sans-serif;
-    --font-family-serif: 'Playfair Display', Georgia, serif;
+    --font-family:  Verdana, Geneva, Tahoma, sans-serif;;
     --heading-line-height: 1.2;
     --body-line-height: 1.6;
     --max-content-width: 800px;
@@ -17,7 +16,7 @@ h1, h2, h3, h4 {
     line-height: var(--heading-line-height);
     margin-top: 1.5em;
     margin-bottom: 0.5em;
-    font-family: var(--font-family-serif);
+    font-family: var(--font-family);
     font-weight: 900;
 }
 
